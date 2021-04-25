@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>osu! Stream Background Config</title>
+    </head>
+    <body>
+        <h1>osu! Stream Background Config</h1>
+        <hr>
+        <form action="/submit">
+            <fieldset>
+                <legend>Server</legend>
+                <label>Details to access the web server (Requires Restart)</label><br><br>
+                <label for="serverHost">Host</label><br>
+                <input type="text" id="serverHost" name="serverHost" value="<%=cfg.server.host%>"><br><br>
+                <label for="serverPort">Port</label><br>
+                <input type="text" id="serverPort" name="serverPort" value="<%=cfg.server.port%>"><br><br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Twitch</legend>
+                <label>Needed for the Twitch Requests (Requires Restart)</label><br><br>
+                <label for="twitchUsername">Bot Username</label><br>
+                <input type="text" id="twitchUsername" name="twitchUsername" value="<%=cfg.integrations.twitch.username%>"><br><br>
+                <label for="twitchToken">Bot Token</label><br>
+                <input type="password" id="twitchToken" name="twitchToken" value="<%=cfg.integrations.twitch.token%>"><br><br>
+                <label for="twitchChannel">Channel Username</label><br>
+                <input type="text" id="twitchChannel" name="twitchChannel" value="<%=cfg.integrations.twitch.channel%>"><br><br>
+                <label for="twitchReward">Reward ID</label><br>
+                <input type="text" id="twitchReward" name="twitchReward" value="<%=cfg.integrations.twitch.rewardID%>"><br><br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Discord</legend>
+                <label>Needed for the Moderation Queue (Requires Restart)</label><br><br>
+                <label for="webhookID">Webhook ID</label><br>
+                <input type="text" id="webhookID" name="webhookID" value="<%=cfg.integrations.discord.webhookID%>"><br><br>
+                <label for="webhookToken">Webhook Token</label><br>
+                <input type="password" id="webhookToken" name="webhookToken" value="<%=cfg.integrations.discord.webhookToken%>"><br><br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Misc</legend>
+                <label>Various settings that can be modified</label><br><br>
+                <label for="prefix">Chat Prefix</label><br>
+                <input type="text" id="prefix" name="prefix" value="<%=cfg.operation.prefix%>"><br><br>
+                <input type="checkbox" id="queue" name="queue" value="1"<%=cfg.operation.enableQueue ? ' checked' : ''%>>
+                <label for="queue">Enable Queue</label><br><br>
+                <input type="checkbox" id="webAccess" name="webAccess" value="1"<%=cfg.operation.webSettings ? ' checked' : ''%>>
+                <label for="webAccess">Allow Web Access? (WARNING: This will disable access to the config and the requests from the web!)</label><br><br>
+            </fieldset>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

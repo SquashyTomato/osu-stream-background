@@ -1,0 +1,58 @@
+{
+  "name": "osu-stream-background",
+  "version": "1.0.0",
+  "description": "A Program To Add Backgrounds To Your Streams Gameplay",
+  "main": "app.js",
+  "bin": "app.js",
+  "scripts": {
+    "start": "node .",
+    "setup": "npm i",
+    "setup-dev": "npm i --save-dev",
+    "build": "pkg ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SquashyTomato/osu-stream-background.git"
+  },
+  "keywords": [
+    "osu!",
+    "OBS",
+    "stream",
+    "background",
+    "wallpaper",
+    "gameplay",
+    "twitch"
+  ],
+  "author": "SquashyTomato",
+  "license": "GNU GPLv3",
+  "bugs": {
+    "url": "https://github.com/SquashyTomato/osu-stream-background/issues"
+  },
+  "homepage": "https://github.com/SquashyTomato/osu-stream-background#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "pkg": "^5.0.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "discord.js": "^12.5.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "tmi.js": "^1.8.3"
+  },
+  "pkg": {
+    "assets": [
+      "./node_modules/chalk/**",
+      "./node_modules/discord.js/**",
+      "./node_modules/ejs/**",
+      "./node_modules/express/**",
+      "./node_modules/fs/**",
+      "./node_modules/tmi.js/**",
+      "./utils/**",
+      "./package-lock.json",
+      "./package.json"
+    ],
+    "outputPath": "bin"
+  }
+}

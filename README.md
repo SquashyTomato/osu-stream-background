@@ -15,6 +15,13 @@ To set up the program [please visit the wiki](https://github.com/SquashyTomato/o
 
 If you need help with any issues you can contact me on Discord (Tomato#0001) or [Message me on Twitter](https://twitter.com/SquashyTomato).
 
+### Todo
+* Make the `/queue` endpoint
+* Allow moderators to whisper to the bot instead of flooding chat
+* Have the queue remove completed or expired requests
+* Automatic completed/rejected channel point rewards
+* Blacklisted links to prevent non-working domains passing through
+
 ### Credits & License
 Developed by [SquashyTomato](https://twitter.com/SquashyTomato)
 

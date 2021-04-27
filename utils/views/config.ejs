@@ -43,6 +43,8 @@
                 <label>Various settings that can be modified</label><br><br>
                 <label for="prefix">Chat Prefix</label><br>
                 <input type="text" id="prefix" name="prefix" value="<%=cfg.operation.prefix%>"><br><br>
+                <label for="requestTimeout">Queue Timeout Length (in seconds)</label><br>
+                <input type="text" id="requestTimeout" name="requestTimeout" value="<%=cfg.operation.requestTimeout || 300%>"><br><br>
                 <input type="checkbox" id="queue" name="queue" value="1"<%=cfg.operation.enableQueue ? ' checked' : ''%>>
                 <label for="queue">Enable Queue</label><br><br>
                 <input type="checkbox" id="webAccess" name="webAccess" value="1"<%=cfg.operation.webSettings ? ' checked' : ''%>>

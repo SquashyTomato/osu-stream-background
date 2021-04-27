@@ -5,6 +5,7 @@ const discord = require('discord.js');
 const updateCurrentImageFromQueue = async (url) => {
     var req = await global.queue.get(url);
     global.current = req.link;
+    global.queue.delete(req.id);
     return req;
 };
 
@@ -15,7 +16,7 @@ const checkVerifyPermissions = async (userstate) => {
 };
 
 const addRequest = async (userstate, message) => {
-    global.queue.set(userstate.id, {id: userstate.id, name: userstate['display-name'], link: message});
+    global.queue.set(userstate.id, {id: userstate.id, name: userstate['display-name'], link: message, time: parseInt(Date.now())});
 
     const embed = new discord.MessageEmbed()
         .setTitle(userstate['display-name'])
@@ -30,5 +31,15 @@ const wipeImage = async () => {
     global.log.warn('The current image was wiped.');
 };
 
+const requestTimeout = async (time) => {
+    setInterval(() => {
+        global.queue.forEach(i => {
+            if ((i.time + parseInt(time * 1000)) < Date.now()) {
+                global.queue.delete(i.id);
+            }
+        });
+    }, 5000);
+};
+
 // Export
-module.exports = {updateCurrentImageFromQueue, checkVerifyPermissions, addRequest, wipeImage};
+module.exports = {updateCurrentImageFromQueue, checkVerifyPermissions, addRequest, wipeImage, requestTimeout};

@@ -5,6 +5,7 @@ const discord = require('discord.js');
 
 // Utilities
 const log = global.log = require('./utils/helpers/consoleHelper');
+const queueHelper = require('./utils/helpers/queueHelper');
 const configHandler = require('./utils/handlers/configHandler');
 const expressHandler = require('./utils/handlers/expressHandler');
 const twitchHandler = require('./utils/handlers/twitchHandler');
@@ -42,6 +43,9 @@ const twitchHandler = require('./utils/handlers/twitchHandler');
     // Define global variables
     global.current = '';
     global.queue = new Map();
+
+    // Run request timeout
+    queueHelper.requestTimeout(global.cfg.operation.requestTimeout || 300);
 
     // Start the Twitch chatbot
     await twitchHandler.startConnection();

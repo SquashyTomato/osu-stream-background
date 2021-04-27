@@ -43,6 +43,7 @@ const createDefaultConfig = async () => {
         operation: {
             prefix: '!',
             enableQueue: 0,
+            requestTimeout: 300,
             webSettings: 1
         }
     };
@@ -92,6 +93,7 @@ const submitRequest = async (query) => {
         operation: {
             prefix: query.prefix,
             enableQueue: query.queue ? parseInt(query.queue) : 0,
+            requestTimeout: query.requestTimeout ? parseInt(query.requestTimeout) : 300,
             webSettings: query.webAccess ? parseInt(query.webAccess) : 0
         }
     };

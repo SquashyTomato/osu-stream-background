@@ -38,7 +38,6 @@ const handleMessage = async (channel, userstate, message) => {
     } else if (command == 'verify') {
         var perm = await queueHelper.checkVerifyPermissions(userstate);
         if (!perm) return;
-
         if (!params[0]) return global.client.say(channel, `@${userstate['display-name']}, please enter a message ID.`);
 
         try {

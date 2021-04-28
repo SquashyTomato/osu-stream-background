@@ -17,7 +17,6 @@ If you need help with any issues you can contact me on Discord (Tomato#0001) or 
 
 ### Todo
 * Make the `/queue` endpoint
-* Allow moderators to whisper to the bot instead of flooding chat
 * Automatic completed/rejected channel point rewards
 * Blacklisted links to prevent non-working domains passing through
 

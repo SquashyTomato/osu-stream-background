@@ -43,6 +43,7 @@ const twitchHandler = require('./utils/handlers/twitchHandler');
     // Define global variables
     global.current = '';
     global.queue = new Map();
+    global.registeredMods = new Array();
 
     // Run request timeout
     queueHelper.requestTimeout(global.cfg.operation.requestTimeout || 300);

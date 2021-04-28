@@ -60,6 +60,9 @@ const checkEmptyConfig = async () => {
     if (!global.cfg.integrations.twitch.username || !global.cfg.integrations.twitch.token || !global.cfg.integrations.twitch.channel) {
         global.log.warn(`Some Twitch credentias are missing, navigate to http://${global.cfg.server.host}:${global.cfg.server.port}/config and fill in the missing information.`);
     }
+    if (global.cfg.operation.enableQueue == 0) {
+        global.log.warn(`THE MODERATION QUEUE IS CURRENTLY DISABLED! If you want to change this navigate to http://${global.cfg.server.host}:${global.cfg.server.port}/config and enable the queue.`);
+    }
     if (global.cfg.operation.enableQueue == 1 && (!global.cfg.integrations.discord.webhookID || !global.cfg.integrations.discord.webhookToken)) {
         global.log.warn(`You have enabled the moderation queue however no Webhook was entered, navigate to http://${global.cfg.server.host}:${global.cfg.server.port}/config and fill in the missing information.`);
     }

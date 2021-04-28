@@ -2,8 +2,8 @@
 const discord = require('discord.js');
 
 // Functions
-const updateCurrentImageFromQueue = async (url) => {
-    var req = await global.queue.get(url);
+const updateCurrentImageFromQueue = async (id) => {
+    var req = await global.queue.get(id);
     global.current = req.link;
     global.queue.delete(req.id);
     return req;

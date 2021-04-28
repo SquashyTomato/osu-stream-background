@@ -2,12 +2,28 @@
 <html>
     <head>
         <title>osu! Stream Background</title>
+<%- include('css') %>
     </head>
     <body>
-        <h1>osu! Stream Background</h1>
-        <hr>
-        <p><a href="/output">Output</a> | <a href="/queue">Request Queue</a> | <a href="/config">Config</a></p>
-        <p><a href="/panic">PANIC</a> | <a href="/exit">Exit App</a></p>
-        <p><a href="https://guthub.com/SquashyTomato/osu-stream-background">Github</a></p>
+<%- include('nav', {page: 'index'}) %>
+            <h2>Welcome to osu! Stream Background, you may navigate using the top bar.</h2>
+            <p>If this is your first time using the program, please go to the config tab and set up the program according to the docs.</p>
+            <hr>
+            <h4>Current Image:</h4>
+            <% if (image) { %>
+            <a href="<%= image %>"><img src="<%= image %>" height="200"></a>
+            <% } else { %>
+            <p>No image currently showing</p>
+            <% } %>
+            <hr>
+            <p>There are <%= queueLength || '0' %> Images in the queue</p>
+            <hr>
+            <p><%= mods.length.toString() || '?' %> Moderators are registered to whisper</p>
+            <%= mods %>
+            <hr>
+            <a class="btn btn-secondary" href="/submit?type=panic">Panic</a>
+            <a class="btn btn-main" href="/submit?type=exit">Exit Program</a>
+        </div>
+        <br>
     </body>
 </html>

@@ -1,1 +1,39 @@
-soon
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>osu! Stream Background Queue</title>
+<%- include('css') %>
+    </head>
+    <body>
+<%- include('nav', {page: 'queue'}) %>
+            <h2>Request Queue</h2>
+            <hr>
+            <h3>Current Image:</h3>
+            <% if (image) { %>
+            <a href="<%= image %>"><img src="<%= image %>" height="150"></a>
+            <% } else { %>
+            <p>No image currently showing</p>
+            <% } %>
+            <hr>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Requester</th>
+                    <th>Image</th>
+                    <th>Time</th>
+                    <th>Options</th>
+                </tr>
+                <% global.queue.forEach(i => { %>
+                <tr>
+                    <td><%= i.id %></td>
+                    <td><%= i.name %></td>
+                    <td><a href="<%= i.link %>"><img src="<%= i.link %>" height="150"></a></td>
+                    <td><%= i.time %></td>
+                    <td><a class="btn btn-main" href="/submit?type=queue&action=verify&id=<%= i.id %>">Approve</a></td>
+                </tr>
+                <% }) %>
+            </table>
+        </div>
+        <br>
+    </body>
+</html>

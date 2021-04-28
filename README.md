@@ -16,6 +16,7 @@ To set up the program [please visit the wiki](https://github.com/SquashyTomato/o
 If you need help with any issues you can contact me on Discord (Tomato#0001) or [Message me on Twitter](https://twitter.com/SquashyTomato).
 
 ### Todo
+* Make time readable for humans (oops)
 * Automatic completed/rejected channel point rewards
 * Blacklisted links to prevent non-working domains passing through
 

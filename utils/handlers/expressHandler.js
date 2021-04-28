@@ -1,9 +1,10 @@
 // Node Packages
+const { query } = require('express');
 const express = require('express');
 
 // Utilities
 const {submitRequest} = require('../handlers/configHandler');
-const {wipeImage} = require('../helpers/queueHelper');
+const {wipeImage, updateCurrentImageFromQueue} = require('../helpers/queueHelper');
 
 // Functions
 const startServer = async () => {
@@ -18,23 +19,29 @@ const startServer = async () => {
 const initRoutes = async () => {
     const router = express.Router();
 
-    router.get('/', async (req, res) => res.render('index'));
+    router.get('/', async (req, res) => res.render('index', {image: global.current, mods: global.registeredMods, queueLength: global.queue.size}));
     router.get('/output', async (req, res) => res.render('output', {image: global.current}));
 
-    router.get('/queue', async (req, res) => res.render('queue', {queue: global.queue}));
+    router.get('/queue', async (req, res) => res.render('queue', {queue: global.queue, mods: global.registeredMods, image: global.current}));
     router.get('/config', async (req, res) => res.render('config', {cfg: global.cfg}));
 
     router.get('/submit', async (req, res) => {
-        submitRequest(req.query);
-        res.location('/config');
-    });
-    router.get('/panic', async (req, res) => {
-        await wipeImage();
-        res.send('Wiped current image!');
-    });
-    router.get('/exit', async () => {
-        global.log.info('Closing...');
-        process.exit(1);
+        switch (req.query.type) {
+        case 'config':
+            submitRequest(req.query);
+            return res.redirect('/config');
+        case 'queue':
+            if (req.query.action == 'verify') updateCurrentImageFromQueue(req.query.id);
+            return res.redirect('/queue');
+        case 'panic':
+            await wipeImage();
+            return res.redirect('/');
+        case 'exit':
+            global.log.info('Closing in 5 seconds...');
+            setInterval(() => {
+                return process.exit(1);
+            }, 5000);
+        }
     });
 
     global.app.use('/', router);

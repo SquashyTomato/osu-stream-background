@@ -1,5 +1,4 @@
 // Node Packages
-const { query } = require('express');
 const express = require('express');
 
 // Utilities

@@ -10,13 +10,7 @@ const startConnection = async () => {
     global.client.on('connected', async (host, port) => global.log.info(`Connected to Twitch at ${host}:${port}`));
     global.client.on('disconnected', async (reason) => global.log.error(`Disconnected from Twitch: ${reason}`));
     global.client.on('chat', (channel, userstate, message, self) => handleChatEvent(channel, userstate, message, self));
-    global.client.on('whisper', (from, userstate, message, self) => {
-        handleWhisper(from, userstate, message, self);
-        console.log(from);
-        console.log(userstate);
-        console.log(message);
-        console.log(self);
-    });
+    global.client.on('whisper', (from, userstate, message, self) => handleWhisper(from, userstate, message, self));
 };
 
 const handleChatEvent = async (channel, userstate, message, self) => {

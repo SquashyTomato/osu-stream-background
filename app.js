@@ -37,7 +37,10 @@ const twitchHandler = require('./utils/handlers/twitchHandler');
     process.on('unhandledRejection', async (err, stack) => {
         global.log.error(`Oh no, an error occured: ${err}`);
         console.log(stack);
-        process.exit(1);
+        global.log.info('Closing in 15 seconds...');
+        setInterval(() => {
+            return process.exit(1);
+        }, 15000);
     });
 
     // Define global variables
